@@ -1,0 +1,57 @@
+logging:
+  level:
+    priv.austin.service.UserService: debug
+feign:
+  #开启hystrix
+  hystrix:
+    enabled: true
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
+    max-connections: 200
+    max-connections-per-route: 50
+  compression:
+    request:
+      enabled: true #是否对请求进行GZIP压缩
+      mime-types: text/xml,application/xml,application/json #指定压缩的请求数据类型
+      min-request-size: 2048 #超过该大小的请求会被压缩
+    response:
+      enabled: true #是否对响应进行GZIP压缩
+ribbon:
+  eager-load:
+    enabled: true
+    clients: feign-provider
+  ConnectTimeout: 2000 #服务请求连接超时时间（毫秒）
+  ReadTimeout: 5000 #服务请求处理超时时间（毫秒）
+  OkToRetryOnAllOperations: true #对超时请求启用重试机制
+  MaxAutoRetriesNextServer: 0 #切换重试实例的最大个数
+  MaxAutoRetries: 0 #切换实例后重试最大次数
+#  修改负载均衡算法
+#  com.netflix.loadbalancer.RandomRule：从提供服务的实例中以随机的方式；
+#  com.netflix.loadbalancer.RoundRobinRule：以线性轮询的方式，就是维护一个计数器，从提供服务的实例中按顺序选取，第一次选第一个，第二次选第二个，以此类推，到最后一个以后再从头来过；
+#  com.netflix.loadbalancer.RetryRule：在RoundRobinRule的基础上添加重试机制，即在指定的重试时间内，反复使用线性轮询策略来选择可用实例；
+#  com.netflix.loadbalancer.WeightedResponseTimeRule：对RoundRobinRule的扩展，响应速度越快的实例选择权重越大，越容易被选择；
+#  com.netflix.loadbalancer.BestAvailableRule：选择并发较小的实例；
+#  com.netflix.loadbalancer.AvailabilityFilteringRule：先过滤掉故障实例，再选择并发较小的实例；
+#  com.netflix.loadbalancer.ZoneAwareLoadBalancer：采用双重过滤，同时过滤不是同一区域的实例和故障实例，选择并发较小的实例。
+  NFLoadBalancerRuleClassName: com.netflix.loadbalancer.AvailabilityFilteringRule
+
+#断路器的超时时长需要大于Ribbon的超时时间，不然不会触发重试
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            # 熔断器超时时间，默认：1000/毫秒
+            timeoutInMilliseconds: 5000
+      circuitBreaker: #用于控制HystrixCircuitBreaker的行为(断路器)
+        enabled: true #用于控制断路器是否跟踪健康状况以及熔断请求
+        requestVolumeThreshold: 20 #触发熔断的最小失败请求数，单位 次/10秒
+        forceOpen: false #强制打开断路器，拒绝所有请求
+        forceClosed: false #强制关闭断路器，接收所有请求
+        # 触发短路的时间值，当该值设为5000时，则当触发 circuit break 后的5000毫秒内都会拒绝request
+        # 也就是5000毫秒后才会关闭circuit。默认5000
+        sleepWindowInMilliseconds: 5000
+        errorThresholdPercentage: 50 #触发熔断的失败请求最小占比，默认50%

@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: admin-client
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.60.16:8848
+        namespace: d3327922-b26c-49a3-aea0-99283904130b
+server:
+  port: 9302
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+logging:
+  file: admin-client.log #添加开启admin的日志监控

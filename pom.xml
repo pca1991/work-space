@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>priv.austin</groupId>
     <artifactId>work-space</artifactId>
     <version>1.0</version>
@@ -9,6 +10,10 @@
 
     <modules>
         <module>common</module>
+        <module>feign-customer</module>
+        <module>feign-provider</module>
+        <module>admin-server</module>
+        <module>admin-client</module>
     </modules>
 
     <properties>
@@ -17,6 +22,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>2.3.7.RELEASE</spring-boot.version>
         <spring-cloud-alibaba.version>2.2.2.RELEASE</spring-cloud-alibaba.version>
+        <spring.cloud.version>Hoxton.SR12</spring.cloud.version>
+        <spring-boot-admin.version>2.3.1</spring-boot-admin.version>
         <hutool-version>5.7.8</hutool-version>
         <swagger.version>3.0.0</swagger.version>
         <knife4j-version>3.0.2</knife4j-version>
@@ -38,6 +45,21 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring.cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-dependencies</artifactId>
+                <version>${spring-boot-admin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
 
             <dependency>
                 <groupId>cn.hutool</groupId>

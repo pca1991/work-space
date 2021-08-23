@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: feign-provider
+  profiles:
+    active: test
