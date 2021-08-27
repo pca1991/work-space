@@ -1,0 +1,12 @@
+server:
+  port: 9501
+spring:
+  profiles:
+    include: common
+  application:
+    name: sa-token-api
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -14,10 +14,15 @@
         <module>feign-provider</module>
         <module>admin-server</module>
         <module>admin-client</module>
+        <module>oauth2-api</module>
+        <module>oauth2-auth</module>
+        <module>oauth2-gateway</module>
+        <module>sa-token</module>
     </modules>
 
     <properties>
-        <java.version>1.8</java.version>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>2.3.7.RELEASE</spring-boot.version>
@@ -27,6 +32,8 @@
         <hutool-version>5.7.8</hutool-version>
         <swagger.version>3.0.0</swagger.version>
         <knife4j-version>3.0.2</knife4j-version>
+        <jjwt-version>0.9.1</jjwt-version>
+        <jwt-jose-version>8.16</jwt-jose-version>
     </properties>
 
     <dependencyManagement>
@@ -77,6 +84,18 @@
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-spring-boot-starter</artifactId>
                 <version>${knife4j-version}</version>
+            </dependency>
+            <!--  jwt -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt-version}</version>
+            </dependency>
+            <!--JWT解析库-->
+            <dependency>
+                <groupId>com.nimbusds</groupId>
+                <artifactId>nimbus-jose-jwt</artifactId>
+                <version>${jwt-jose-version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

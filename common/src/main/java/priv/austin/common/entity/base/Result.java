@@ -34,6 +34,16 @@ public class Result<R> {
         return result;
     }
 
+    public static <R> Result<R> ofSuccess(R data) {
+        Result<R> result = new Result<R>();
+        result.setSuccess(true);
+        result.setSysRetcode("000000");
+        result.setSysRetmsg("success");
+        result.setFinRetcode(RetCode.SUCCESS.getCode());
+        result.setData(data);
+        return result;
+    }
+
 
     public static <R> Result<R> ofUnknow(String code, String msg) {
         Result<R> result = new Result<>();

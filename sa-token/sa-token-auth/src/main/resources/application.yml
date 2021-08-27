@@ -1,0 +1,12 @@
+server:
+  port: 9401
+spring:
+  profiles:
+    include: common
+  application:
+    name: sa-token-auth
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -1,0 +1,26 @@
+server:
+  port: 9201
+spring:
+  profiles:
+    include: common
+  application:
+    name: sa-token-gateway
+  cloud:
+    gateway:
+      routes: #配置路由路径
+        - id: oauth2-api-route
+          uri: lb://sa-token-api
+          predicates:
+            - Path=/api/**
+          filters:
+            - StripPrefix=1
+        - id: oauth2-auth-route
+          uri: lb://sa-token-auth
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
+      discovery:
+        locator:
+          enabled: true #开启从注册中心动态创建路由的功能
+          lower-case-service-id: true #使用小写服务名，默认是大写
