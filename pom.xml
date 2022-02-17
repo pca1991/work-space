@@ -18,6 +18,7 @@
         <module>oauth2-auth</module>
         <module>oauth2-gateway</module>
         <module>sa-token</module>
+        <module>test</module>
     </modules>
 
     <properties>
