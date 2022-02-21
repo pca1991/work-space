@@ -1,4 +1,4 @@
-package priv.austin.common.entity;
+package priv.austin.common.domain;
 
 import lombok.*;
 

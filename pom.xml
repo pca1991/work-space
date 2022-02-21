@@ -18,7 +18,7 @@
         <module>oauth2-auth</module>
         <module>oauth2-gateway</module>
         <module>sa-token</module>
-        <module>test</module>
+        <module>business-validator</module>
     </modules>
 
     <properties>
@@ -35,6 +35,7 @@
         <knife4j-version>3.0.2</knife4j-version>
         <jjwt-version>0.9.1</jjwt-version>
         <jwt-jose-version>8.16</jwt-jose-version>
+        <hibernate-validator>7.0.2.Final</hibernate-validator>
     </properties>
 
     <dependencyManagement>
@@ -97,6 +98,11 @@
                 <groupId>com.nimbusds</groupId>
                 <artifactId>nimbus-jose-jwt</artifactId>
                 <version>${jwt-jose-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate-validator}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

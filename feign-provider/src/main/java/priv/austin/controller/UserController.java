@@ -1,11 +1,8 @@
 package priv.austin.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import priv.austin.common.entity.base.ErrorCode;
-import priv.austin.common.entity.base.Result;
-import priv.austin.common.entity.base.RetCode;
+import priv.austin.common.domain.base.CommonResult;
 import priv.austin.entity.User;
 import priv.austin.service.UserService;
 
@@ -25,40 +22,42 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/create")
-    public Result create(@RequestBody User user) {
+    public CommonResult<?> create(@RequestBody User user) {
         userService.create(user);
-        return Result.ofSuccess(null, RetCode.SUCCESS);
+        return CommonResult.success();
     }
 
     @GetMapping("/{id}")
-    public Result getUser(@PathVariable Long id) {
+    public CommonResult<?> getUser(@PathVariable Long id) {
         User user = userService.getUser(id);
         log.info("根据id获取用户信息，用户名称为：{}",user.getUsername());
-        return Result.ofSuccess(user, RetCode.SUCCESS);
+        return CommonResult.success(user);
+
     }
 
     @GetMapping("/getUserByIds")
-    public Result getUserByIds(@RequestParam List<Long> ids) {
+    public CommonResult<?> getUserByIds(@RequestParam List<Long> ids) {
         List<User> userList= userService.getUserByIds(ids);
         log.info("根据ids获取用户信息，用户列表为：{}",userList);
-        return Result.ofSuccess(userList, RetCode.SUCCESS);
+        return CommonResult.success(userList);
+
     }
 
     @GetMapping("/getByUsername")
-    public Result getByUsername(@RequestParam String username) {
+    public CommonResult<?> getByUsername(@RequestParam String username) {
         User user = userService.getByUsername(username);
-        return Result.ofSuccess(user, RetCode.SUCCESS);
+        return CommonResult.success(user);
     }
 
     @PostMapping("/update")
-    public Result update(@RequestBody User user) {
+    public CommonResult<?> update(@RequestBody User user) {
         userService.update(user);
-        return Result.ofSuccess(null, RetCode.SUCCESS);
+        return CommonResult.success();
     }
 
     @PostMapping("/delete/{id}")
-    public Result delete(@PathVariable Long id) {
+    public CommonResult<?> delete(@PathVariable Long id) {
         userService.delete(id);
-        return Result.ofSuccess(null, RetCode.SUCCESS);
+        return CommonResult.success();
     }
 }

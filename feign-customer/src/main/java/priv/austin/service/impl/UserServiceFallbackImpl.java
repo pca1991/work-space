@@ -1,39 +1,37 @@
 package priv.austin.service.impl;
 
 import org.springframework.stereotype.Component;
-import priv.austin.common.entity.base.ErrorCode;
-import priv.austin.common.entity.base.Result;
-import priv.austin.common.entity.base.RetCode;
+import priv.austin.common.domain.base.CommonResult;
+import priv.austin.common.domain.base.ErrorCode;
 import priv.austin.entity.User;
 import priv.austin.service.UserService;
 
 @Component
 public class UserServiceFallbackImpl implements UserService {
     @Override
-    public Result create(User user) {
-        User defaultUser = new User(-1L, "defaultUser", "123456");
-        return Result.ofSuccess(defaultUser, RetCode.SUCCESS);
+    public CommonResult<?> create(User user) {
+        return CommonResult.success( new User(-1L, "defaultUser", "123456")) ;
     }
 
     @Override
-    public Result getUser(Long id) {
-        User defaultUser = new User(-1L, "defaultUser", "123456");
-        return Result.ofSuccess(defaultUser, RetCode.SUCCESS);
+    public CommonResult<?> getUser(Long id) {
+        return CommonResult.success( new User(-1L, "defaultUser", "123456")) ;
+
     }
 
     @Override
-    public Result getByUsername(String username) {
-        User defaultUser = new User(-1L, "defaultUser", "123456");
-        return Result.ofSuccess(defaultUser, RetCode.SUCCESS);
+    public CommonResult<?> getByUsername(String username) {
+        return CommonResult.success( new User(-1L, "defaultUser", "123456")) ;
+
     }
 
     @Override
-    public Result update(User user) {
-        return Result.ofFail(ErrorCode.SYS_INNER_ERROR,"调用失败，服务被降级");
+    public CommonResult<?> update(User user) {
+        return CommonResult.failed(ErrorCode.SYS_FAILED,"调用失败，服务被降级");
     }
 
     @Override
-    public Result delete(Long id) {
-        return Result.ofFail(ErrorCode.SYS_INNER_ERROR,"调用失败，服务被降级");
+    public CommonResult<?> delete(Long id) {
+        return CommonResult.failed(ErrorCode.SYS_FAILED,"调用失败，服务被降级");
     }
 }

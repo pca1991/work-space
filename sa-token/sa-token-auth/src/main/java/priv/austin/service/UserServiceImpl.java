@@ -5,7 +5,7 @@ import cn.dev33.satoken.stp.SaTokenInfo;
 import cn.dev33.satoken.stp.StpUtil;
 import cn.hutool.core.collection.CollUtil;
 import org.springframework.stereotype.Service;
-import priv.austin.common.entity.UserDTO;
+import priv.austin.common.domain.UserDTO;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;

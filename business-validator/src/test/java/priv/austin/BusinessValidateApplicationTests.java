@@ -10,7 +10,7 @@ import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 @SpringBootTest
-class TestApplicationTests {
+class BusinessValidateApplicationTests {
 
     @Test
     void contextLoads() {

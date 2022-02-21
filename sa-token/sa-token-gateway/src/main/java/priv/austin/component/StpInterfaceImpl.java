@@ -3,7 +3,7 @@ package priv.austin.component;
 import cn.dev33.satoken.stp.StpInterface;
 import cn.dev33.satoken.stp.StpUtil;
 import org.springframework.stereotype.Component;
-import priv.austin.common.entity.UserDTO;
+import priv.austin.common.domain.UserDTO;
 
 import java.util.List;
 

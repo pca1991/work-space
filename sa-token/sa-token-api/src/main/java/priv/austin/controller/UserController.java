@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import priv.austin.common.api.CommonResult;
-import priv.austin.common.entity.UserDTO;
+import priv.austin.common.domain.UserDTO;
 
 /**
  * @author Austin
