@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Service
 public class UserServiceImpl implements UserService {
-    private List<User> userList;
+    public static List<User> userList;
 
     /**
      * @param userName
@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public boolean existsByUserName(String userName) {
-        return userList.stream().anyMatch(c -> c.getUserName().equals(userName));
+        return true;
     }
 
     /**

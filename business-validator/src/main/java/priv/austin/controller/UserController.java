@@ -2,13 +2,11 @@ package priv.austin.controller;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-import priv.austin.annotation.NotConflictUser;
-import priv.austin.annotation.UniqueUser;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import priv.austin.domain.User;
-import priv.austin.service.UserService;
 
 import javax.validation.Valid;
 
@@ -18,16 +16,16 @@ import javax.validation.Valid;
  * @date 2022/2/21 4:09 下午
  */
 @RestController
-@RequestMapping("/senior/user")
+@RequestMapping("/user")
 @Slf4j
-@Validated
 public class UserController {
-    @PostMapping
-    public void createUser(@UniqueUser @Valid User user){
+    @PostMapping("/create")
+    public String createUser(@RequestBody @Valid User user){
+        return "OK";
     }
 
     @SneakyThrows
-    @PutMapping
-    public void updateUser(@NotConflictUser @Valid @RequestBody User user){
+    @PostMapping("/update")
+    public void updateUser(@Valid @RequestBody User user){
     }
 }

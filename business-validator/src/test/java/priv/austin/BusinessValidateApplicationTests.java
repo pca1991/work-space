@@ -3,7 +3,9 @@ package priv.austin;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.convert.converter.Converter;
+import priv.austin.service.UserService;
 
+import javax.annotation.Resource;
 import java.time.ZoneId;
 import java.util.*;
 import java.util.function.Predicate;
@@ -12,21 +14,24 @@ import java.util.function.Supplier;
 @SpringBootTest
 class BusinessValidateApplicationTests {
 
+    @Resource
+    UserService userService;
+
     @Test
     void contextLoads() {
-
+        System.out.println(userService.existsByUserName("qxu1"));
     }
 
     public static void main(String[] args){
-        List<String> list = Arrays.asList("a","b","c");
-        Collections.sort(list, new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                return o1.compareTo(o2);
-            }
-        });
-
-        Collections.sort(list,(a,b) -> b.compareTo(a));
+        //List<String> list = Arrays.asList("a","b","c");
+        //Collections.sort(list, new Comparator<String>() {
+        //    @Override
+        //    public int compare(String o1, String o2) {
+        //        return o1.compareTo(o2);
+        //    }
+        //});
+        //
+        //Collections.sort(list,(a,b) -> b.compareTo(a));
         //
         //list.sort((a,b) -> a.compareTo(b));
 
