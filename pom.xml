@@ -19,6 +19,7 @@
         <module>oauth2-gateway</module>
         <module>sa-token</module>
         <module>business-validator</module>
+        <module>http</module>
     </modules>
 
     <properties>
@@ -35,6 +36,8 @@
         <knife4j-version>3.0.2</knife4j-version>
         <jjwt-version>0.9.1</jjwt-version>
         <jwt-jose-version>8.16</jwt-jose-version>
+        <httpclient-version>4.5.13</httpclient-version>
+        <okhttp-version>4.9.3</okhttp-version>
     </properties>
 
     <dependencyManagement>
@@ -98,6 +101,19 @@
                 <artifactId>nimbus-jose-jwt</artifactId>
                 <version>${jwt-jose-version}</version>
             </dependency>
+            <!--  Apache的HttpClient -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient-version}</version>
+            </dependency>
+            <!-- OKHttp -->
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>${okhttp-version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 </project>
