@@ -23,7 +23,7 @@ public class RestTemplateConfig {
     //OkHttp > Apache的HttpClient > HttpURLConnection
 
     /**
-     * 2.使用 Apache的HttpClient 作为底层客户端
+     * 初始化
      * @return RestTemplate
      */
     @ConditionalOnMissingBean(RestTemplate.class)
