@@ -43,7 +43,7 @@ public class GlobalExceptionHandler {
                 .map(ConstraintViolation::getMessage)
                 .collect(Collectors.joining(","));
 
-        return CommonResult.failed( ErrorCode.PARAM_VALIDATE_FAILED, message);
+        return CommonResult.validateFailed( message);
     }
 
     /**
@@ -55,7 +55,7 @@ public class GlobalExceptionHandler {
                 .map(fieldError -> fieldError.getField() + ":" + fieldError.getDefaultMessage())
                 .collect(Collectors.joining(","));
 
-        return CommonResult.failed( ErrorCode.PARAM_VALIDATE_FAILED, message);
+        return CommonResult.validateFailed( message);
     }
 
     @ExceptionHandler(JsonMappingException.class)

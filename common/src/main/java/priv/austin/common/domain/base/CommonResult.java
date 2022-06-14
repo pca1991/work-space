@@ -53,7 +53,6 @@ public class CommonResult<T> {
     }
     /**
      * 成功返回
-     * @param data 数据封装
      * @return 成功返回
      */
     public static <T> CommonResult<T> success() {
