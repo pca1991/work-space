@@ -14,9 +14,6 @@
         <module>feign-provider</module>
         <module>admin-server</module>
         <module>admin-client</module>
-        <module>oauth2-api</module>
-        <module>oauth2-auth</module>
-        <module>oauth2-gateway</module>
         <module>sa-token</module>
         <module>business-validator</module>
         <module>http</module>
