@@ -1,13 +1,21 @@
 package priv.austin.common.config;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+import com.fasterxml.jackson.databind.deser.std.StringDeserializer;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.util.StringUtils;
 import priv.austin.common.constant.CommonConsts;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 
@@ -28,6 +36,23 @@ public class JacksonConfig {
         mapper.setDateFormat(new SimpleDateFormat(CommonConsts.DATE_TIME_FORMAT));
         mapper.setTimeZone(TimeZone.getTimeZone(CommonConsts.TIME_ZONE));
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+        //开启该特征，能将空字符串（""）对应的POJOs转换成null.
+        mapper.configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, true);
+
+        //空字符串处理为null
+        SimpleModule module = new SimpleModule();
+        module.addDeserializer(String.class, new StdDeserializer<String>(String.class) {
+            private static final long serialVersionUID = 116413909288673613L;
+
+            @Override
+            public String deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+                String result = StringDeserializer.instance.deserialize(p, ctxt);
+                return StringUtils.isEmpty(result) ? null : result;
+            }
+        });
+        mapper.registerModule(module);
+
         return mapper;
     }
 
