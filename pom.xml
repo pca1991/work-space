@@ -17,6 +17,7 @@
         <module>sa-token</module>
         <module>business-validator</module>
         <module>http</module>
+        <module>mybatis-plus</module>
     </modules>
 
     <properties>
@@ -24,9 +25,9 @@
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <spring-boot.version>2.3.7.RELEASE</spring-boot.version>
+        <spring-boot.version>2.5.4</spring-boot.version>
         <spring-cloud-alibaba.version>2.2.2.RELEASE</spring-cloud-alibaba.version>
-        <spring.cloud.version>Hoxton.SR12</spring.cloud.version>
+        <spring.cloud.version>2020.0.6</spring.cloud.version>
         <spring-boot-admin.version>2.3.1</spring-boot-admin.version>
         <hutool-version>5.7.8</hutool-version>
         <swagger.version>3.0.0</swagger.version>
@@ -35,6 +36,7 @@
         <jwt-jose-version>8.16</jwt-jose-version>
         <httpclient-version>4.5.13</httpclient-version>
         <okhttp-version>4.9.3</okhttp-version>
+        <mybatis-plus-version>3.5.3.1</mybatis-plus-version>
     </properties>
 
     <dependencyManagement>
@@ -110,7 +112,11 @@
                 <artifactId>okhttp</artifactId>
                 <version>${okhttp-version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus-version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

@@ -1,0 +1,2 @@
+1687940746898|14|statement|connection 0|url jdbc:p6spy:oracle:thin:@192.168.5.70:1521:pep|SELECT SEQ_STUDENT_ID.NEXTVAL FROM DUAL|SELECT SEQ_STUDENT_ID.NEXTVAL FROM DUAL
+1687940746956|16|statement|connection 0|url jdbc:p6spy:oracle:thin:@192.168.5.70:1521:pep|INSERT INTO STUDENT  ( student_id, student_name, age )  VALUES  ( ?, ?, ? )|INSERT INTO STUDENT  ( student_id, student_name, age )  VALUES  ( 3, '小明', 19 )
