@@ -3,6 +3,7 @@ package priv.austin.service.impl;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import priv.austin.entity.StudentPO;
 import priv.austin.service.StudentService;
 import priv.austin.service.TestService;
@@ -28,7 +29,6 @@ public class TestServiceImpl implements TestService {
         b();
     }
 
-    //@Transactional(rollbackFor = Exception.class)
     public void b() {
         LambdaUpdateWrapper<StudentPO> updateWrapper = new LambdaUpdateWrapper<>();
         updateWrapper.set( StudentPO::getStudentName, "b").eq( StudentPO::getStudentId, 2);
@@ -40,6 +40,6 @@ public class TestServiceImpl implements TestService {
         LambdaUpdateWrapper<StudentPO> updateWrapper = new LambdaUpdateWrapper<>();
         updateWrapper.set( StudentPO::getStudentName, "c").eq( StudentPO::getStudentId, 3);
         studentService.update( updateWrapper);
-        throw new RuntimeException("测试内部方法调用事务");
+        TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
     }
 }

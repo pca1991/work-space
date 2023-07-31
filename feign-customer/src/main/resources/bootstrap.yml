@@ -1,5 +1,0 @@
-spring:
-  application:
-    name: feign-customer
-  profiles:
-    active: test

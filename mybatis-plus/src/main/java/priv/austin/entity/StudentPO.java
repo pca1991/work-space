@@ -3,24 +3,21 @@ package priv.austin.entity;
 import com.baomidou.mybatisplus.annotation.*;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-
 import lombok.Data;
+import priv.austin.gender.GenderEnum;
 
 /**
  * 
- * @author qxu
- * @TableName STUDENT
+ * @TableName student
  */
-@TableName(value ="STUDENT")
+@TableName(value ="student")
 @Data
-@KeySequence(value = "SEQ_STUDENT_ID")
 public class StudentPO implements Serializable {
     /**
-     * id
+     * 学生编号
      */
-    @TableId(type = IdType.INPUT)
-    private Long studentId;
+    @TableId(type = IdType.AUTO)
+    private Integer studentId;
 
     /**
      * 姓名
@@ -30,7 +27,13 @@ public class StudentPO implements Serializable {
     /**
      * 年龄
      */
-    private long age;
+    private Integer age;
+
+    /**
+     * 性别
+     */
+    @EnumValue
+    private GenderEnum gender;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

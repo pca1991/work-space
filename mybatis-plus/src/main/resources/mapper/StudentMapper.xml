@@ -5,12 +5,14 @@
 <mapper namespace="priv.austin.mapper.StudentMapper">
 
     <resultMap id="BaseResultMap" type="priv.austin.entity.StudentPO">
-            <id property="studentId" column="STUDENT_ID" jdbcType="DECIMAL"/>
-            <result property="studentName" column="STUDENT_NAME" jdbcType="VARCHAR"/>
-            <result property="age" column="AGE" jdbcType="DECIMAL"/>
+            <id property="studentId" column="student_id" jdbcType="INTEGER"/>
+            <result property="studentName" column="student_name" jdbcType="VARCHAR"/>
+            <result property="age" column="age" jdbcType="INTEGER"/>
+            <result property="gender" column="gender" jdbcType="CHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        STUDENT_ID,STUDENT_NAME,AGE
+        student_id,student_name,age,
+        gender
     </sql>
 </mapper>

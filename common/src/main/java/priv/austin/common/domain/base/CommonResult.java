@@ -1,6 +1,7 @@
 package priv.austin.common.domain.base;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author Austin
@@ -8,6 +9,7 @@ import lombok.Data;
  * @date 2022/2/17 4:11 下午
  */
 @Data
+@NoArgsConstructor
 public class CommonResult<T> {
     /**
      * 应答码
