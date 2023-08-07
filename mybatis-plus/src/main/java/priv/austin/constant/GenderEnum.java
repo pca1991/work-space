@@ -1,4 +1,4 @@
-package priv.austin.gender;
+package priv.austin.constant;
 
 import com.baomidou.mybatisplus.annotation.EnumValue;
 import com.fasterxml.jackson.annotation.JsonValue;

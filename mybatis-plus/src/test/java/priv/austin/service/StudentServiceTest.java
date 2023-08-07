@@ -7,10 +7,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import priv.austin.entity.StudentPO;
-import priv.austin.gender.GenderEnum;
+import priv.austin.constant.GenderEnum;
 
 import javax.annotation.Resource;
-import java.util.Arrays;
 
 @SpringBootTest
 class StudentServiceTest {

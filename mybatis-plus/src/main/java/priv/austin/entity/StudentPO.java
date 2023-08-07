@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.annotation.*;
 
 import java.io.Serializable;
 import lombok.Data;
-import priv.austin.gender.GenderEnum;
+import priv.austin.constant.GenderEnum;
 
 /**
  * 
